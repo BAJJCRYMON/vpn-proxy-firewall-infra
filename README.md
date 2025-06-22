@@ -10,10 +10,11 @@ L’objectif est de fournir une solution complète pour un accès distant sécur
 
 ## Architecture générale
 
-- VPN full tunnel permettant un accès distant sécurisé via WireGuard.
-- Cloisonnement réseau assuré par des pare-feux configurés pour séparer les zones LAN, DMZ et Internet.
-- Proxy filtrant pour contrôler et journaliser les sorties Internet.
-- Monitoring des flux et de la santé des équipements via des outils dédiés.
+- Le client VPN se connecte initialement à un VPS distant, qui sert de point d’entrée.
+- Un tunnel WireGuard permanent relie ce VPS à la DMZ interne, assurant un canal sécurisé et cloisonné.
+- Depuis la DMZ, le trafic traverse un pare-feu dédié entre la DMZ et le LAN pour accéder aux services internes.
+- Pour la sortie Internet, le même pare-feu redirige le trafic vers un proxy filtrant, garantissant contrôle et journalisation des accès externes.
+- L’ensemble est supervisé par des outils de monitoring dédiés, assurant la visibilité et la résilience de l’infrastructure.
 
 ---
 
